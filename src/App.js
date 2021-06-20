@@ -7,11 +7,9 @@ export default function App() {
   return (
     <div className="App">
       <button onClick={() => setShow(true)}>Show Modal</button>
-      {show && (
-        <Modal show={show} onClose={() => setShow(false)} title="My Modal">
-          <p>This is modal body</p>
-        </Modal>
-      )}
+      <Modal show={show} onClose={() => setShow(false)} title="My Modal">
+        <p>This is modal body</p>
+      </Modal>
     </div>
   );
 }

@@ -3,8 +3,8 @@ import "./Modal.css";
 
 const Modal = (props) => {
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal" onClick={props.onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h4 className="modal-title">Modal title</h4>
         </div>

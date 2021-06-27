@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import "./Modal.css";
 
@@ -17,7 +18,8 @@ const Modal = (props) => {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
   }, []);
-  return (
+
+  return ReactDOM.createPortal(
     <CSSTransition
       in={props.show}
       unmountOnExit
@@ -39,7 +41,8 @@ const Modal = (props) => {
           </div>
         </div>
       </div>
-    </CSSTransition>
+    </CSSTransition>,
+    document.getElementById("root")
   );
 };
 

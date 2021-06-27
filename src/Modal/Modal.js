@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
 import "./Modal.css";
 
 const Modal = (props) => {
+  // console.log(props);
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
+      //escape keyCode is 27
       props.onClose();
     }
   };
@@ -15,22 +18,28 @@ const Modal = (props) => {
     };
   }, []);
   return (
-    <div
-      className={`modal ${props.show ? "show" : ""}`}
-      onClick={props.onClose}
+    <CSSTransition
+      in={props.show}
+      unmountOnExit
+      timeout={{ enter: 0, exit: 300 }}
     >
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h4 className="modal-title">{props.title}</h4>
-        </div>
-        <div className="modal-body">{props.children}</div>
-        <div className="modal-footer">
-          <button onClick={props.onClose} className="button">
-            Close
-          </button>
+      <div
+        className={`modal ${props.show ? "show" : ""}`}
+        onClick={props.onClose}
+      >
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-header">
+            <h4 className="modal-title">{props.title}</h4>
+          </div>
+          <div className="modal-body">{props.children}</div>
+          <div className="modal-footer">
+            <button onClick={props.onClose} className="button">
+              Close
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </CSSTransition>
   );
 };
 

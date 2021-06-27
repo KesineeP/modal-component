@@ -9,19 +9,24 @@
   transition: all 0.3s ease-in-out;
   pointer-events: none;
 }
-.modal.show {
+.modal.enter-done {
   opacity: 1;
   pointer-events: visible;
 }
-
+.modal.exit {
+  opacity: 0;
+}
 .modal-content {
   width: 500px;
   background-color: #fff;
   transform: translateY(-200px);
   transition: all 0.3s ease-in-out;
 }
-.modal.show .modal-content {
+.modal.enter-done .modal-content {
   transform: translateY(0);
+}
+.modal.exit .modal-content {
+  transform: translateY(-200);
 }
 .modal-header,
 .modal-footer {

@@ -6,6 +6,7 @@ import "./Modal.css";
 const Modal = (props) => {
   // console.log(props);
   const closeOnEscapeKeyDown = (e) => {
+    //function decoration
     if ((e.charCode || e.keyCode) === 27) {
       //escape keyCode is 27
       props.onClose();
@@ -17,7 +18,7 @@ const Modal = (props) => {
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
-  }, []);
+  }, []); //[] mean it will only run once
 
   return ReactDOM.createPortal(
     <CSSTransition
